@@ -5,6 +5,7 @@ import { errorHandler } from './middleware/error-handler.js';
 import purchaseOrderRoutes from './modules/purchase-order/purchase-order.route.js';
 import purchaseRequestRoutes from './modules/purchase-request/purchase-request.route.js';
 import lookupRoutes from './modules/lookup/lookup.route.js';
+import docsRoutes from './docs/docs.route.js';
 export async function buildApp() {
     const fastify = Fastify({
         logger: true,
@@ -44,5 +45,7 @@ export async function buildApp() {
     await fastify.register(purchaseOrderRoutes);
     await fastify.register(purchaseRequestRoutes);
     await fastify.register(lookupRoutes);
+    // Register Documentation & Testing Routes
+    await fastify.register(docsRoutes);
     return fastify;
 }
